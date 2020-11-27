@@ -10,7 +10,7 @@ import (
 	"github.com/deepmap/oapi-codegen/pkg/middleware"
 	"github.com/labstack/echo/v4"
 	echomiddleware "github.com/labstack/echo/v4/middleware"
-	"github.com/mojadev/camunda-go-delegate/internal/api"
+	"github.com/mojadev/camunda-go-delegate/api"
 	{{- range $delegate := .Delegates }}
 	{{- if ne $delegate.Package "main"}}
 	"{{ $.Module }}/{{ $delegate.Package }}"
