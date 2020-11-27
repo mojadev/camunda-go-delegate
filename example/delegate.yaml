@@ -1,0 +1,8 @@
+name: CurrencyConvert
+version: 1.0.0
+description: Convert currency
+module:  github.com/mojadev/camunda-go-delegate
+delegates:
+  - filename: convert-currency-delegate.go
+    function: ConvertCurrency
+    export: convert-currency

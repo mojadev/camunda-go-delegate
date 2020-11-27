@@ -1,0 +1,119 @@
+openapi: 3.0.1
+info:
+    title: Camunda Remote Endpoint
+    description: 'This is an unoffical HTTP endpoint for camunda services'
+    contact:
+        email: mojadev@gmail.com
+    license:
+        name: MIT
+    version: 1.0.0
+paths:
+     /{handler}/execution:
+        summary: Endpoint for remote process step execution that can be called from the process
+        get:
+            description: Retrieve information about the process step implementation
+            operationId: retrieveProcessStepInfo
+            parameters:
+                - name: handler
+                  in: path
+                  schema:
+                      type: string
+            responses:
+                '200':
+                    description: Process Step information
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ProcessStepExecutorDetails'
+        post:
+            description: Submit a execution request for the given process step
+            operationId: executeProcessStep
+            parameters:
+                - name: handler
+                  in: path
+                  schema:
+                      type: string
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                      schema:
+                        $ref: '#/components/schemas/ProcessContext'
+            responses:
+                '200':
+                    description: Successful execution of the process step
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ProcessExecutionResult'
+                '400':
+                    description: The process couldn't be executed due to insufficient context (e.g. missing variables)
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ErrorResponse'
+                '500':
+                    description: An error occured during exeuction
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ErrorResponse'
+components:
+    schemas:
+        ProcessContext:
+            type: object
+            properties:
+                variables:
+                    $ref: '#/components/schemas/VariableScope'
+
+        ProcessStepExecutorDetails:
+            type: object
+            properties:
+                version:
+                    type: string
+                description:
+                    type: string
+            required:
+                - version
+        ProcessExecutionResult:
+            type: object
+            properties:
+                variables:
+                    $ref: '#/components/schemas/VariableScope'
+                signals:
+                    description: 'Signals and events that should be emitted in the process'
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/Signal'
+        VariableScope:
+            description: Container object for process variables
+            type: object
+            additionalProperties: true
+        Signal:
+            type: object
+            properties:
+                type:
+                    description:  The type of signal that should be send. Errors *should* always be executed last and must only occur once.
+                    type: string
+                    enum:
+                    - Message
+                    - Signal
+                    - Error
+                key:
+                   type: string
+                message:
+                    type: string
+                variables:
+                    $ref: '#/components/schemas/VariableScope'
+            required:
+                - type
+        ErrorResponse:
+            type: object
+            properties:
+                message:
+                    type: string
+                additionalInformation:
+                    type: array
+                    items:
+                        type: object
+                        additionalProperties: true
