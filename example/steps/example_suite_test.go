@@ -1,4 +1,4 @@
-package delegates_test
+package steps_test
 
 import (
 	"testing"

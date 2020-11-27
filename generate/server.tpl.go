@@ -7,10 +7,8 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/deepmap/oapi-codegen/pkg/middleware"
-	"github.com/labstack/echo/v4"
-	echomiddleware "github.com/labstack/echo/v4/middleware"
 	"github.com/mojadev/camunda-go-delegate/api"
+	"github.com/mojadev/camunda-go-delegate/handler"
 	{{- range $delegate := .Delegates }}
 	{{- if ne $delegate.Package "main"}}
 	"{{ $.Module }}/{{ $delegate.Package }}"
@@ -40,12 +38,7 @@ func main() {
 		},
 		Handler: delegates,
 	}
-	openapiSpec, _ := api.GetSwagger()
-	e := echo.New()
-	e.Use(echomiddleware.Logger())
-	e.Use(middleware.OapiRequestValidator(openapiSpec))
-	api.RegisterHandlers(e, endpoint)
+	e := handler.SetupServer(endpoint)
 	e.Logger.Fatal(e.Start(fmt.Sprintf("0.0.0.0:%d", *port)))
-
 }
 `

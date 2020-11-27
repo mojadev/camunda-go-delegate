@@ -6,7 +6,7 @@ type ExecutionContext struct {
 
 type ExecutionResult struct {
 	Variables VariableScope
-	Signals []Signal
+	Signals   []Signal
 }
 
 func CreateExecutionResult() ExecutionResult {
@@ -17,16 +17,17 @@ func CreateExecutionResult() ExecutionResult {
 }
 
 type Signal struct {
-	Name MessageName
+	Name             MessageName
 	ProcessVariables VariableScope
 }
 
 type ProcessMessage struct {
-	Name MessageName
-	BusinessKey BusinessKey
-	CorrelationKeys VariableScope
+	Name             MessageName
+	BusinessKey      BusinessKey
+	CorrelationKeys  VariableScope
 	ProcessVariables VariableScope
 }
+
 
 type VariableScope = map[VariableKey]VariableValue
 
@@ -38,3 +39,15 @@ type BusinessKey = *string
 
 type SignalName = string
 type SignalData = interface{}
+
+type VersionDescriptor struct {
+	Description string
+	Version string
+}
+
+type HandlerFunc = func(ctx *ExecutionContext) (ExecutionResult, error)
+
+type ProcessStepEndpoint struct {
+	Version VersionDescriptor
+	Handler map[string]HandlerFunc
+}

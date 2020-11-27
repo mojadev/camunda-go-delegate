@@ -1,24 +1,17 @@
-//go:generate go run github.com/deepmap/oapi-codegen/cmd/oapi-codegen --config=./types.cfg.yaml ../../endpoint-api.yaml
-//go:generate go run github.com/deepmap/oapi-codegen/cmd/oapi-codegen --config=./server.cfg.yaml ../../endpoint-api.yaml
+//go:generate go run github.com/deepmap/oapi-codegen/cmd/oapi-codegen --config=./types.cfg.yaml ../../../api/endpoint-api.yaml
+//go:generate go run github.com/deepmap/oapi-codegen/cmd/oapi-codegen --config=./server.cfg.yaml ../../../api/endpoint-api.yaml
 
 package api
 
 import (
 	"github.com/labstack/echo/v4"
-	"github.com/mojadev/camunda-go-delegate/api"
+	"github.com/mojadev/camunda-go-delegate/pkg/api"
 	"net/http"
 )
 
-type VersionDescriptor struct {
-	Description string
-	Version string
-}
-
-type HandlerFunc = func(ctx *api.ExecutionContext) (api.ExecutionResult, error)
-
 type ProcessStepEndpoint struct {
-	Version VersionDescriptor
-	Handler map[string]HandlerFunc
+	Version api.VersionDescriptor
+	Handler map[string]api.HandlerFunc
 }
 
 func (p ProcessStepEndpoint) RetrieveProcessStepInfo(ctx echo.Context, handler string) error {

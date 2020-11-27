@@ -1,6 +1,6 @@
 //go:generate go run github.com/mojadev/camunda-go-delegate/generate --config ../delegate.yaml --output ../main.go
 
-package delegates
+package steps
 
 import (
 	"errors"
