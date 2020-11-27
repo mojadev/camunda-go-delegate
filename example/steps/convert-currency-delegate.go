@@ -4,13 +4,14 @@ package steps
 
 import (
 	"errors"
-	"github.com/mojadev/camunda-go-delegate/api"
+	"github.com/mojadev/camunda-go-delegate/pkg/api"
 )
 
 type CurrencyContainer struct {
 	Amount int
 }
 
+// ConvertCurrency is a nosense implementation of currency conversion to showcase how to use the api
 func ConvertCurrency(ctx *api.ExecutionContext) (api.ExecutionResult, error)  {
 	result := api.CreateExecutionResult()
 	currency, ok := ctx.Variables["currency"].(CurrencyContainer)

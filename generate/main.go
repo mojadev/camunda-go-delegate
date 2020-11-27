@@ -46,7 +46,7 @@ func main() {
 	var outputPath = ""
 
 	flag.StringVar(&configFilePath, "config", "","the delegate configuration to use")
-	flag.StringVar(&outputPath, "output", "server.go","the output to write to")
+	flag.StringVar(&outputPath, "output", "main.go","the output to write to")
 	flag.Parse()
 
 	configFile, err := ioutil.ReadFile(configFilePath)

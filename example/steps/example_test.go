@@ -1,7 +1,7 @@
 package steps_test
 
 import (
-	"github.com/mojadev/camunda-go-delegate/api"
+	"github.com/mojadev/camunda-go-delegate/pkg/api"
 	"github.com/mojadev/camunda-go-delegate-example/steps"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
