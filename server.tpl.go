@@ -7,8 +7,8 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/mojadev/camunda-go-delegate/api"
-	"github.com/mojadev/camunda-go-delegate/handler"
+	"github.com/mojadev/camunda-go-delegate/pkg/api"
+	"github.com/mojadev/camunda-go-delegate/pkg/handler"
 	{{- range $delegate := .Delegates }}
 	{{- if ne $delegate.Package "main"}}
 	"{{ $.Module }}/{{ $delegate.Package }}"

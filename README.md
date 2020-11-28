@@ -13,7 +13,7 @@ Check out the [example](../../example) folder for an example how to use it.
 
 ### General usage
 
-`go run github.com/mojadev/camunda-go-delegate/generate --config {config} --output {output}`
+`go run github.com/mojadev/camunda-go-delegate --config {config} --output {output}`
 
 Options:
 - _config_="":   
@@ -26,7 +26,7 @@ Options:
 
 Add the following line on top of your go file
 
-`//go:generate go run github.com/mojadev/camunda-go-delegate/generate --config ../delegate.yaml --output ../main.go`
+`//go:generate go run github.com/mojadev/camunda-go-delegate --config ../delegate.yaml --output ../main.go`
 
 ### Adding a delegate configuration
 

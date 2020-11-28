@@ -16,6 +16,7 @@ paths:
             parameters:
                 - name: handler
                   in: path
+                  required: true
                   schema:
                       type: string
             responses:
@@ -31,6 +32,7 @@ paths:
             parameters:
                 - name: handler
                   in: path
+                  required: true
                   schema:
                       type: string
             requestBody:

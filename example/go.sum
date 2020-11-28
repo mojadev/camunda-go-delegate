@@ -49,6 +49,8 @@ github.com/mattn/go-isatty v0.0.10 h1:qxFzApOv4WsAL965uUPIsXzAKCZxN2p9UqdhFS4ZW1
 github.com/mattn/go-isatty v0.0.10/go.mod h1:qgIWMr58cqv1PHHyhnkY9lrL7etaEgOFcMEpPG5Rm84=
 github.com/mojadev/camunda-go-delegate v0.0.1 h1:R8R2JcX60W//eglE+UlOrrjYf6ayHR/LiQ2wZKFdxe8=
 github.com/mojadev/camunda-go-delegate v0.0.1/go.mod h1:V4BgOKvfcjy7NUm3ZCwYETrJKzk6WFgfLu0fiGhvmXY=
+github.com/mojadev/camunda-go-delegate v0.0.2 h1:hmuEOx0mUQ2Sysq4TYnd+3hlWtP3kT31192P0b+GmwM=
+github.com/mojadev/camunda-go-delegate v0.0.2/go.mod h1:V4BgOKvfcjy7NUm3ZCwYETrJKzk6WFgfLu0fiGhvmXY=
 github.com/mojadev/camunda-go-delegate/generate v0.0.0-20201127211307-28b2b152533d h1:E5juPfxwraC/l/fA566xnMW04YfRvIkRvn95wsdhK9c=
 github.com/mojadev/camunda-go-delegate/generate v0.0.0-20201127211307-28b2b152533d/go.mod h1:SgsHaSc1xn7/5pHtzVfvfb5GGml2Xmh1f75Ystmqv2M=
 github.com/nxadm/tail v1.4.4 h1:DQuhQpB1tVlglWS2hLQ5OV6B5r8aGxSrPc5Qo6uTN78=

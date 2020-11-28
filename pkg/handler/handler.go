@@ -21,6 +21,7 @@ func SetupServer(endpoint api.ProcessStepEndpoint) *echo.Echo {
 	e := echo.New()
 	e.Use(echomiddleware.Logger())
 	e.Use(middleware.OapiRequestValidator(openapiSpec))
+
 	RegisterHandlers(e, endpoint)
 	return e
 }
