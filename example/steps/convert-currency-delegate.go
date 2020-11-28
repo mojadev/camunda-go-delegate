@@ -1,4 +1,4 @@
-//go:generate go run github.com/mojadev/camunda-go-delegate/generate --config ../delegate.yaml --output ../main.go
+//go:generate go run github.com/mojadev/camunda-go-delegate --config ../delegate.yaml --output ../main.go
 
 package steps
 
