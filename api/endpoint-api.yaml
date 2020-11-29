@@ -7,6 +7,17 @@ info:
     license:
         name: MIT
     version: 1.0.0
+servers:
+    - url: '{protocol}://{delegateHost}/v1'
+      variables:
+          delegateHost:
+              default: localhost
+              description: The hostname under which this delegate service is provided
+          protocol:
+              default: https
+              enum:
+                - http
+                - https
 tags:
     - name: camundaDelegate
       description: Delegate execution relative interface
