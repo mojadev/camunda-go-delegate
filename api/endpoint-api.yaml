@@ -7,12 +7,17 @@ info:
     license:
         name: MIT
     version: 1.0.0
+tags:
+    - name: camundaDelegate
+      description: Delegate execution relative interface
 paths:
      /{handler}/execution:
         summary: Endpoint for remote process step execution that can be called from the process
         get:
             description: Retrieve information about the process step implementation
             operationId: retrieveProcessStepInfo
+            tags:
+                - camundaDelegate
             parameters:
                 - name: handler
                   in: path
@@ -29,6 +34,8 @@ paths:
         post:
             description: Submit a execution request for the given process step
             operationId: executeProcessStep
+            tags:
+                - camundaDelegate
             parameters:
                 - name: handler
                   in: path
