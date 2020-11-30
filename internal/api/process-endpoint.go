@@ -52,8 +52,10 @@ func (p ProcessStepEndpoint)  ExecuteProcessStep(ctx echo.Context, handler strin
 
 func mapFromDto(dto *VariableScope) *api.VariableScope {
 	result := make(api.VariableScope)
-	for key, element := range dto.AdditionalProperties {
-		result[key] = element
+	if dto != nil && dto.AdditionalProperties != nil {
+		for key, element := range dto.AdditionalProperties {
+			result[key] = element
+		}
 	}
 	return &result
 }
@@ -62,8 +64,10 @@ func mapToDto(domain *api.VariableScope) *VariableScope {
 	result := VariableScope{
 		AdditionalProperties: make(map[string]interface{}),
 	}
-	for key, element := range *domain {
-		result.AdditionalProperties[key] = element
+	if domain != nil {
+		for key, element := range *domain {
+			result.AdditionalProperties[key] = element
+		}
 	}
 	return &result
 }
